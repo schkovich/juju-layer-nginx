@@ -1,6 +1,6 @@
 includes: ['layer:basic', 'layer:apt', 'interface:http']
-repo: https://github.com/battlemidget/juju-layer-nginx
+repo: https://github.com/schkovich/juju-layer-nginx
 options:
   apt:
     packages:
-      - nginx-full
+      - nginx
