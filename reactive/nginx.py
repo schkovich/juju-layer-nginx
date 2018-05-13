@@ -3,17 +3,17 @@ from charms.reactive import (
     when_not,
     when
 )
+from charms.layer import status
 
 from charmhelpers.core import hookenv
 
 config = hookenv.config()
 
-
 # handlers --------------------------------------------------------------------
 @when('apt.installed.nginx')
 @when_not('nginx.available')
 def nginx_ready():
-    hookenv.status_set('active', 'NGINX is ready.')
+    status.active('NGINX is ready.')
     set_state('nginx.available')
 
 # Example website.available reaction ------------------------------------------
