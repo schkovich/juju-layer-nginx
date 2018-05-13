@@ -3,6 +3,7 @@ from charms.reactive import (
     when_not,
     when
 )
+from charms.layer import status
 
 from charms.layer import nginx
 

@@ -1,4 +1,4 @@
-includes: ['layer:basic', 'layer:apt', 'interface:http']
+includes: ['layer:basic', 'layer:status', 'layer:apt', 'interface:http']
 repo: https://github.com/schkovich/juju-layer-nginx
 options:
   apt:
