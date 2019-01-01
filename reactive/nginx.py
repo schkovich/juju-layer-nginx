@@ -3,21 +3,23 @@ from charms.reactive import (
     when_not,
     when
 )
+
 from charms.layer import status
 
-from charms.layer import nginx
-
-from charmhelpers.core import hookenv
-
-config = hookenv.config()
+from charms.layer.nginx import remove_default_site
 
 # Handlers --------------------------------------------------------------------
-@when('apt.installed.nginx')
+@when_not('apt.installed.nginx-common')
+def install_nginx():
+    nginx_flavor = layer.options.get('nginx', 'nginx_flavor'):
+    charms.apt.queue_install([nginx_flavor])
+
+@when('apt.installed.nginx-common')
 @when_not('nginx.available')
 def nginx_ready():
-    nginx.remove_default_site()
-    hookenv.status_set('active', 'NGINX is ready')
-    set_state('nginx.started')
+    remove_default_site()
+    status.active('NGINX is ready.');
+    set_state('nginx.available')
 
 # Example website.available reaction ------------------------------------------
 """

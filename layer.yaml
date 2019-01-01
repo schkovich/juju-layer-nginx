@@ -1,6 +1,10 @@
 includes: ['layer:basic', 'layer:status', 'layer:apt', 'interface:http']
 repo: https://github.com/schkovich/juju-layer-nginx
-options:
-  apt:
-    packages:
-      - nginx
+defines:  # define some options for nginx layer
+  nginx_flavor:  # define an "nginx_flavor" option for this layer
+    description: |
+      Defines which nginx flavor to install. Could be nginx-core, nginx-light, 
+      nginx-full or nginx-extras.
+      
+    type: string
+    default: "nginx-full"
