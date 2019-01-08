@@ -5,6 +5,5 @@ defines:  # define some options for nginx layer
     description: |
       Defines which nginx flavor to install. Could be nginx-core, nginx-light, 
       nginx-full or nginx-extras.
-      
     type: string
     default: "nginx-full"
